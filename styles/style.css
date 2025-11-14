@@ -16,6 +16,11 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center; /* Центрирование по вертикали */
+  min-height: 100vh;
+  padding: 0 40px;
 }
 
 h1,
@@ -48,4 +53,329 @@ ol {
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1400px;
+  width: 100%;
+  gap: 32px;
+  align-items: end;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  gap: 20px;
+}
+
+.search-form__fieldset {
+  flex-grow: 1;
+}
+
+.search-form__submit-button {
+  flex-shrink: 0;
+}
+
+.content__list-container {
+  height: 298px;
+  overflow-y: scroll;
+}
+
+.content__details {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.result__video-container {
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.content__video-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.content__video-card-thumbnail {
+  width: 194px;
+  height: 103px;
+  flex-shrink: 0; /* Чтобы размеры не сжимались, когда мало места */
+  object-fit: cover;
+  object-position: center;
+}
+
+.content__video-card-description-container {
+  /* Занимает все оставшееся пространство */
+  flex-grow: 1;
+}
+
+.search-form__fieldset-title {
+  font-weight: 400;
+  font-size: 18px;
+  margin-block-end: 5px;
+}
+
+.title {
+  font-family: Oswald;
+  font-weight: 700;
+  font-size: 78px;
+  line-height: 94%;
+  text-transform: uppercase;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__card-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.content__video-card-title {
+  font-family: Oswald;
+  font-size: 30px;
+  line-height: 100%;
+  text-transform: uppercase;
+  width: 190px;
+
+  /* Обработка переполнения для одной строки */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; /* Добавляем многоточие */
+
+  /* Отступ снизу для отделения от описания */
+  margin-block-end: 6px;
+}
+
+.content__video-card-description {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 16.2px;
+
+  /* Обработка переполнения для ограничения двумя строками */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  /* Для старых браузеров */
+  clip: rect(0 0 0 0);
+  /* Более современный способ */
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.search-form__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-form__label {
+  display: flex;
+  width: fit-content; /* Ширина по содержимому */
+  align-items: center; /* Выравнивание элементов по центру по вертикали */
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 20px;
+}
+
+.search-form__textfield {
+  /* Сброс стандартного внешнего вида */
+  appearance: none;
+  /* Сброс стилей, которые могут наследоваться */
+  box-sizing: border-box;
+
+  width: 225px;
+  height: 27px;
+  background-color: transparent;
+
+  font-family: 'Fira Sans Condensed';
+  font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+
+  border: none;
+  border-block-start: 1px solid #fff;
+  border-block-end: 1px solid #fff;
+}
+
+.search-form__textfield::placeholder {
+  color: #8C8C8C;
+  opacity: 1;
+}
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__label:has(.search-form__textfield:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__pseudo-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  flex-shrink: 0; /* Чтобы не сжимался */
+  margin-inline-end: 10px; /* Отступ от текста */
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form__pseudo-checkbox::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+
+  opacity: 0;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  opacity: 1;
+}
+
+.search-form__label:has(.search-form__checkbox:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__checkbox:focus {
+  outline: none;
+}
+
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+}
+
+.button {
+  height: 34px;
+  box-sizing: border-box;
+
+  background-color: transparent;
+  border: 1px solid #fff;
+
+  color: #fff;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+.search-form__submit-button {
+  width: 194px;
+}
+
+.more-button {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  background-color: #545050;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.content__list-item {
+  padding-inline-start: 3px;
+  padding-inline-end: 3px;
+  width: 390px;
+}
+
+.content__card-link {
+  display: block;
+  outline: none;
+}
+
+.content__card-link_current {
+  background-color: transparent;
+}
+
+.content__card-link:hover .content__video-card-title,
+.content__card-link:hover .content__video-card-description {
+  text-decoration: underline;
+}
+
+.content__card-link:active {
+  background-color: #545050;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+a,
+.button {
+  cursor: pointer;
+}
+
+.search-form__label {
+  cursor: pointer;
+}
+
+.search-form__textfield {
+  cursor: text;
+}
+
+.result__video-container {
+  position: relative;
+}
+
+.content__list-container {
+  position: relative;
 }
